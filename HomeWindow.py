@@ -146,7 +146,7 @@ class HomeScreen(QMainWindow):
         self.btn_home.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold; border:1px solid white")
         self.btn_add.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold ; border:1px solid white")
         self.btn_manage.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold ; border:1px solid white")
-        self.btn_history.setStyleSheet("width:500px;height:250px;font-size:40px;background:#6C9BCF;color:#fff;font-weight:bold ; border:1px solid white")
+        self.btn_history.setStyleSheet("width:500px;height:250px;font-size:40px;background:#7B3F00;color:#fff;font-weight:bold ; border:1px solid white")
 
         self.frame_1.hide()
         self.frame_2.hide()
@@ -157,7 +157,7 @@ class HomeScreen(QMainWindow):
     def showAdd(self):
 
         self.btn_home.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold; border:1px solid white")
-        self.btn_add.setStyleSheet("width:500px;height:250px;font-size:40px;background:#6C9BCF;color:#fff;font-weight:bold ; border:1px solid white")
+        self.btn_add.setStyleSheet("width:500px;height:250px;font-size:40px;background:#7B3F00;color:#fff;font-weight:bold ; border:1px solid white")
         self.btn_manage.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold ; border:1px solid white")
         self.btn_history.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold ; border:1px solid white")
 
@@ -171,7 +171,7 @@ class HomeScreen(QMainWindow):
 
         self.btn_home.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold; border:1px solid white")
         self.btn_add.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold ; border:1px solid white")
-        self.btn_manage.setStyleSheet("width:500px;height:250px;font-size:40px;background:#6C9BCF;color:#fff;font-weight:bold ; border:1px solid white")
+        self.btn_manage.setStyleSheet("width:500px;height:250px;font-size:40px;background:#7B3F00;color:#fff;font-weight:bold ; border:1px solid white")
         self.btn_history.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold ; border:1px solid white")
 
 
@@ -188,7 +188,7 @@ class HomeScreen(QMainWindow):
 
     def showHome(self):
 
-        self.btn_home.setStyleSheet("width:500px;height:250px;font-size:40px;background:#6C9BCF;color:#fff;font-weight:bold; border:1px solid white")
+        self.btn_home.setStyleSheet("width:500px;height:250px;font-size:40px;background:#7B3F00;color:#fff;font-weight:bold; border:1px solid white")
         self.btn_add.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold ; border:1px solid white")
         self.btn_manage.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold ; border:1px solid white")
         self.btn_history.setStyleSheet("width:500px;height:250px;font-size:40px;background:#FFEA20;color:#fff;font-weight:bold ; border:1px solid white")
