@@ -1,6 +1,7 @@
 import mysql.connector
 import json
 from datetime import datetime
+import re
 
 
 
@@ -76,25 +77,44 @@ class DBOperation():
         return data
 
 
-    def AddVehicles(self,name,vehicleno,mobile,vehicle_type):
-        spacid=self.spaceAvailable(vehicle_type)
+    # Modify your validation logic in DBOperation class
+    def validate_vehicle_number(self, vehicle_no):
+        # Define a regular expression pattern for the expected format (MH-12-1234)
+        import re
+        pattern = r'^[A-Z]{2}-\d{2}-\d{4}$'
+
+        if re.match(pattern, vehicle_no):
+            return True
+        else:
+            return False
+
+    def AddVehicles(self, name, vehicleno, mobile, vehicle_type):
+        # Validate user input
+        if not name or not mobile or not vehicleno or not vehicle_type:
+            return "Please fill in all fields."
+
+        if not self.validate_phone_number(mobile) or not self.validate_vehicle_number(vehicleno):
+            return "Invalid input. Please check your data and try again."
+
+        spacid = self.spaceAvailable(vehicle_type)
         if spacid:
+            currentdata = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            data = (name, mobile, currentdata, '', '0', vehicleno, currentdata, currentdata, vehicle_type)
+            cursor = self.mydb.cursor()
 
-            currentdata=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            data=(name,mobile,str(currentdata),'','0',vehicleno,str(currentdata),str(currentdata),vehicle_type)
-            cursor=self.mydb.cursor()
-
-
-            cursor.execute("INSERT into vehicles (name,mobile,entry_time,exit_time,is_exit,vehicle_no,created_at,updated_at,vehicle_type) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)",data)
+            cursor.execute(
+                "INSERT into vehicles (name,mobile,entry_time,exit_time,is_exit,vehicle_no,created_at,updated_at,vehicle_type) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                data)
             self.mydb.commit()
-            lastid=cursor.lastrowid
-            cursor.execute("UPDATE slots set vehicle_id='"+str(lastid)+"', is_empty ='0' where id='"+str(spacid)+"'")
+            lastid = cursor.lastrowid
+            cursor.execute(
+                "UPDATE slots set vehicle_id='" + str(lastid) + "', is_empty ='0' where id='" + str(spacid) + "'")
             self.mydb.commit()
             cursor.close()
             return True
-
         else:
             return "No Space Available for Parking."
+
 
 
     def spaceAvailable(self,v_type):
