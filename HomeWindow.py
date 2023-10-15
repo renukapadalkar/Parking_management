@@ -10,6 +10,8 @@ import PyQt5.QtGui
 from PyQt5.QtPrintSupport import QPrinter,QPrintDialog
 from PyQt5.QtGui import  QPainter,QTextDocument
 
+from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
+
 class HomeScreen(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -305,7 +307,10 @@ class HomeScreen(QMainWindow):
         button=QPushButton(" Add Vehicle")
         button.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px;background:green;border:1px solid white")
 
-
+        print_button = QPushButton("Print Receipt")
+        print_button.setStyleSheet("color:#fff;padding:8px 0px;font-size:20px;background:blue;border:1px solid white")
+        print_button.clicked.connect(self.printReceipt)
+        layout.addWidget(print_button)
 
 
         layout.addWidget(name_label)
@@ -333,7 +338,15 @@ class HomeScreen(QMainWindow):
         self.vertical_2.addWidget(frame)
 
 
-
+    def printReceipt(self):
+        receipt_text = "Receipt Content"  # Replace this with the actual content you want to print
+        printer = QPrinter()
+        dialog = QPrintDialog(printer, self)
+        if dialog.exec_() == QPrintDialog.Accepted:
+            painter = QPainter(printer)
+            doc = QTextDocument()
+            doc.setPlainText(receipt_text)
+            doc.print(painter)
 
 
 
